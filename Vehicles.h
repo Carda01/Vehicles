@@ -27,7 +27,7 @@ public:
 
     std::stringstream charger() const;
 
-    friend std::ostream & operator<<(std::ostream &, const Vehicle &);
+    friend std::ostream &operator<<(std::ostream &, const Vehicle &);
 
 private:
     virtual std::string charge() const;
@@ -35,31 +35,32 @@ private:
 
 class Car : public Vehicle {
 public:
-    Car(std::string, unsigned int, unsigned int);
+    explicit Car(std::string = "def", unsigned int = 0, unsigned int = 0);
 
 private:
-    std::string charge() const;
+    std::string charge() const override;
 };
 
 class MotorCycle : public Vehicle {
 public:
-    MotorCycle(std::string, unsigned int, unsigned int);
+    explicit MotorCycle(std::string = "def", unsigned int = 0, unsigned int = 0);
+
 private:
-    std::string charge() const;
+    std::string charge() const override;
 };
 
 class Boat : public Vehicle {
 public:
-    Boat(std::string, unsigned int, unsigned int);
+    explicit Boat(std::string = "def", unsigned int = 0, unsigned int = 0);
 
 private:
-    std::string charge() const;
+    std::string charge() const override;
 };
 
 template<class T>
 class Queue {
 public:
-    Queue(size_t);
+    explicit Queue(size_t);
 
     ~Queue();
 
@@ -75,7 +76,7 @@ public:
     friend std::ostream &operator<<(std::ostream &, const Queue<U> &);
 
 private:
-    void circular(int & index);
+    void circular(int &index);
 
 private:
     T *arr;

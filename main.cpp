@@ -25,28 +25,26 @@ int main() {
             cin >> type;
         } while (type != 1 && type != 2 && type != 3);
         cout << "Insert brand: ";
-        cin>>brand;
+        cin >> brand;
         cout << "Insert horsePower: ";
-        cin>>horsePower;
+        cin >> horsePower;
         cout << "Insert mass: ";
-        cin>>mass;
+        cin >> mass;
 
         if (type == 1) {
-            Car element {brand, horsePower, mass};
+            Car element{brand, horsePower, mass};
             queueCar.enQueue(element);
-        }
-        else if (type == 2) {
-            MotorCycle element {brand, horsePower, mass};
+        } else if (type == 2) {
+            MotorCycle element{brand, horsePower, mass};
             queueMotorCycle.enQueue(element);
-        }
-        else{
-            Boat element {brand, horsePower, mass};
+        } else {
+            Boat element{brand, horsePower, mass};
             queueBoat.enQueue(element);
         }
 
     }
 
-    cout<<queueBoat<<endl;
-    cout<<queueMotorCycle<<endl;
-    cout<<queueCar<<endl;
+    cout << queueBoat << endl;
+    cout << queueMotorCycle << endl;
+    cout << queueCar << endl;
 }

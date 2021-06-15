@@ -25,16 +25,15 @@ void Vehicle::init(std::string _brand, unsigned int _horsePower, unsigned int _m
 }
 
 
-
 void Vehicle::decelerate() { acceleration--; }
 
 void Vehicle::updateSpeed() { speed = horsePower * horseToWatt / (mass * acceleration); }
 
-std::string Vehicle::charge() const{ return "Undefined";}
+std::string Vehicle::charge() const { return "Undefined"; }
 
-std::stringstream Vehicle::charger() const{
+std::stringstream Vehicle::charger() const {
     std::stringstream ss;
-    ss << "Type: " << this->charge()<<std::endl;
+    ss << "Type: " << this->charge() << std::endl;
     ss << "Brand: " << this->brand << std::endl;
     ss << "HorsePower: " << this->horsePower << std::endl;
     ss << "Mass: " << this->mass << std::endl;
@@ -42,8 +41,8 @@ std::stringstream Vehicle::charger() const{
     return ss;
 }
 
-std::ostream & operator<<(std::ostream &out, const Vehicle &vehicle) {
-    out << "Type: " << vehicle.charge()<<std::endl;
+std::ostream &operator<<(std::ostream &out, const Vehicle &vehicle) {
+    out << "Type: " << vehicle.charge() << std::endl;
     out << "Brand: " << vehicle.brand << std::endl;
     out << "HorsePower: " << vehicle.horsePower << std::endl;
     out << "Mass: " << vehicle.mass << std::endl;
@@ -51,21 +50,20 @@ std::ostream & operator<<(std::ostream &out, const Vehicle &vehicle) {
     return out;
 }
 
-Car::Car(std::string _brand = "def", unsigned int _horsePower = 0, unsigned int _mass = 0) : Vehicle(_brand,
-                                                                                                     _horsePower,
-                                                                                                     _mass) {}
+Car::Car(std::string _brand, unsigned int _horsePower, unsigned int _mass) : Vehicle(_brand,
+                                                                                     _horsePower,
+                                                                                     _mass) {}
 
 std::string Car::charge() const { return "Car"; }
 
-MotorCycle::MotorCycle(std::string _brand = "def", unsigned int _horsePower = 0, unsigned int _mass = 0) : Vehicle(
-        _brand, _horsePower,
-        _mass) {}
+MotorCycle::MotorCycle(std::string _brand, unsigned int _horsePower, unsigned int _mass)
+        : Vehicle(_brand, _horsePower, _mass) {}
 
 std::string MotorCycle::charge() const { return "MotorCycle"; }
 
-Boat::Boat(std::string _brand = "def", unsigned int _horsePower = 0, unsigned int _mass = 0) : Vehicle(_brand,
-                                                                                                       _horsePower,
-                                                                                                       _mass) {}
+Boat::Boat(std::string _brand, unsigned int _horsePower, unsigned int _mass) : Vehicle(_brand,
+                                                                                       _horsePower,
+                                                                                       _mass) {}
 
 std::string Boat::charge() const { return "Boat"; }
 
