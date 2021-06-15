@@ -45,6 +45,7 @@ int main() {
         }
 
     }
+
     cout<<queueBoat<<endl;
     cout<<queueMotorCycle<<endl;
     cout<<queueCar<<endl;

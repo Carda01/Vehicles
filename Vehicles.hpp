@@ -22,14 +22,28 @@ void Vehicle::init(std::string _brand, unsigned int _horsePower, unsigned int _m
     brand = _brand;
     horsePower = _horsePower;
     mass = _mass;
-
 }
+
+
 
 void Vehicle::decelerate() { acceleration--; }
 
 void Vehicle::updateSpeed() { speed = horsePower * horseToWatt / (mass * acceleration); }
 
-std::ostream &operator<<(std::ostream &out, const Vehicle &vehicle) {
+std::string Vehicle::charge() const{ return "Undefined";}
+
+std::stringstream Vehicle::charger() const{
+    std::stringstream ss;
+    ss << "Type: " << this->charge()<<std::endl;
+    ss << "Brand: " << this->brand << std::endl;
+    ss << "HorsePower: " << this->horsePower << std::endl;
+    ss << "Mass: " << this->mass << std::endl;
+    ss << "CurrentSpeed : " << this->speed << std::endl;
+    return ss;
+}
+
+std::ostream & operator<<(std::ostream &out, const Vehicle &vehicle) {
+    out << "Type: " << vehicle.charge()<<std::endl;
     out << "Brand: " << vehicle.brand << std::endl;
     out << "HorsePower: " << vehicle.horsePower << std::endl;
     out << "Mass: " << vehicle.mass << std::endl;
@@ -41,17 +55,20 @@ Car::Car(std::string _brand = "def", unsigned int _horsePower = 0, unsigned int 
                                                                                                      _horsePower,
                                                                                                      _mass) {}
 
+std::string Car::charge() const { return "Car"; }
+
 MotorCycle::MotorCycle(std::string _brand = "def", unsigned int _horsePower = 0, unsigned int _mass = 0) : Vehicle(
         _brand, _horsePower,
         _mass) {}
 
+std::string MotorCycle::charge() const { return "MotorCycle"; }
+
 Boat::Boat(std::string _brand = "def", unsigned int _horsePower = 0, unsigned int _mass = 0) : Vehicle(_brand,
                                                                                                        _horsePower,
                                                                                                        _mass) {}
-std::ostream & operator<<(std::ostream & out, const Boat & boat){
-    out<<"Type: Boat"<<std::endl;
-    return out;
-}
+
+std::string Boat::charge() const { return "Boat"; }
+
 
 template<class T>
 Queue<T>::Queue(size_t _size) : size(_size) {
@@ -104,7 +121,7 @@ template<class U>
 std::ostream &operator<<(std::ostream &out, const Queue<U> &queue) {
     for (int i = queue.head; i <= queue.tail; i++) {
         i = i % queue.size;
-        out << queue.arr[i] << ' ';
+        out << queue.arr[i].charger().str() << ' ';
     }
     out << std::endl;
     return out;

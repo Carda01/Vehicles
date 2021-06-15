@@ -25,26 +25,35 @@ public:
 
     void updateSpeed();
 
-    std::ostream & charger(std::ostream & out);
+    std::stringstream charger() const;
 
     friend std::ostream & operator<<(std::ostream &, const Vehicle &);
+
+private:
+    virtual std::string charge() const;
 };
 
 class Car : public Vehicle {
 public:
     Car(std::string, unsigned int, unsigned int);
+
+private:
+    std::string charge() const;
 };
 
 class MotorCycle : public Vehicle {
 public:
     MotorCycle(std::string, unsigned int, unsigned int);
+private:
+    std::string charge() const;
 };
 
 class Boat : public Vehicle {
 public:
     Boat(std::string, unsigned int, unsigned int);
 
-    friend std::ostream & operator<<(std::ostream &, const Boat &);
+private:
+    std::string charge() const;
 };
 
 template<class T>
