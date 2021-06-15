@@ -7,6 +7,7 @@
 
 #include<iostream>
 #include<cstring>
+#include<sstream>
 
 class Vehicle {
 public:
